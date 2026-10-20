@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,7 +22,12 @@
       --success: #E2FF32;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       font-size: 13px;
@@ -40,11 +46,13 @@
       justify-content: space-between;
       margin-bottom: 12px;
     }
+
     .brand {
       display: flex;
       align-items: center;
       gap: 8px;
     }
+
     .brand-icon {
       width: 22px;
       height: 22px;
@@ -53,15 +61,18 @@
       justify-content: center;
       color: var(--accent);
     }
+
     .brand-name {
       font-size: 16px;
       font-weight: 700;
       letter-spacing: -0.02em;
       color: var(--text-primary);
     }
+
     .brand-name span {
       color: var(--accent);
     }
+
     .status-badge {
       display: inline-flex;
       align-items: center;
@@ -75,6 +86,7 @@
       color: var(--text-secondary);
       transition: all 0.2s ease;
     }
+
     .status-badge .dot {
       width: 6px;
       height: 6px;
@@ -82,10 +94,12 @@
       background: var(--text-secondary);
       transition: background 0.2s ease, box-shadow 0.2s ease;
     }
+
     .status-badge.connected {
       color: var(--text-primary);
       border-color: rgba(226, 255, 50, 0.3);
     }
+
     .status-badge.connected .dot {
       background: var(--accent);
       box-shadow: 0 0 6px var(--accent);
@@ -99,6 +113,7 @@
       padding: 10px 12px;
       margin-bottom: 12px;
     }
+
     .summary-header {
       display: flex;
       align-items: center;
@@ -106,6 +121,7 @@
       gap: 8px;
       margin-bottom: 4px;
     }
+
     .page-title {
       font-size: 12px;
       font-weight: 600;
@@ -115,6 +131,7 @@
       text-overflow: ellipsis;
       flex: 1;
     }
+
     .rescan-btn {
       background: transparent;
       border: 1px solid var(--border);
@@ -130,15 +147,18 @@
       flex-shrink: 0;
       transition: all 0.15s ease;
     }
+
     .rescan-btn:hover {
       border-color: var(--accent);
       color: var(--accent);
       background: var(--surface-hover);
     }
+
     .rescan-btn:disabled {
       opacity: 0.5;
       cursor: not-allowed;
     }
+
     .counts-row {
       font-size: 11px;
       color: var(--text-secondary);
@@ -146,6 +166,7 @@
       align-items: center;
       gap: 6px;
     }
+
     .counts-row .count-highlight {
       color: var(--text-primary);
       font-weight: 600;
@@ -159,6 +180,7 @@
       margin-bottom: 8px;
       padding: 0 1px;
     }
+
     .tabs {
       display: flex;
       align-items: center;
@@ -168,6 +190,7 @@
       border-radius: 6px;
       border: 1px solid var(--border);
     }
+
     .tab-btn {
       background: transparent;
       border: 1px solid transparent;
@@ -182,21 +205,25 @@
       align-items: center;
       gap: 4px;
     }
+
     .tab-btn:hover {
       color: var(--text-primary);
     }
+
     .tab-btn.active {
       background: var(--bg);
       color: var(--accent);
       border-color: var(--accent-border);
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     }
+
     .selection-controls {
       display: flex;
       align-items: center;
       gap: 6px;
       font-size: 11px;
     }
+
     .link-action {
       background: none;
       border: none;
@@ -207,9 +234,11 @@
       padding: 2px 4px;
       transition: color 0.15s;
     }
+
     .link-action:hover {
       color: var(--accent);
     }
+
     .link-sep {
       color: var(--border);
       font-size: 10px;
@@ -223,16 +252,20 @@
       margin-bottom: 12px;
       padding-right: 2px;
     }
+
     .list-container::-webkit-scrollbar {
       width: 4px;
     }
+
     .list-container::-webkit-scrollbar-track {
       background: transparent;
     }
+
     .list-container::-webkit-scrollbar-thumb {
       background: var(--border);
       border-radius: 4px;
     }
+
     .list-container::-webkit-scrollbar-thumb:hover {
       background: var(--text-secondary);
     }
@@ -249,24 +282,29 @@
       transition: border-color 0.15s, background-color 0.15s;
       cursor: pointer;
     }
+
     .resource-item:hover {
       border-color: var(--border-light);
       background: var(--surface-hover);
     }
+
     .resource-item.selected {
       border-color: rgba(226, 255, 50, 0.25);
     }
+
     .checkbox-wrap {
       display: flex;
       align-items: center;
       flex-shrink: 0;
     }
+
     .checkbox-wrap input[type="checkbox"] {
       width: 14px;
       height: 14px;
       accent-color: var(--accent);
       cursor: pointer;
     }
+
     .type-badge {
       font-size: 9px;
       font-weight: 700;
@@ -276,16 +314,20 @@
       flex-shrink: 0;
       text-transform: uppercase;
     }
+
     .type-badge.pdf {
       color: var(--accent);
       background: var(--accent-muted);
       border: 1px solid var(--accent-border);
     }
-    .type-badge.ppt, .type-badge.pptx {
+
+    .type-badge.ppt,
+    .type-badge.pptx {
       color: var(--warning);
       background: rgba(255, 167, 38, 0.12);
       border: 1px solid rgba(255, 167, 38, 0.35);
     }
+
     .filename {
       flex: 1;
       min-width: 0;
@@ -310,12 +352,14 @@
       border: 1px dashed var(--border);
       border-radius: 8px;
     }
+
     .empty-state-title {
       font-size: 12px;
       font-weight: 600;
       color: var(--text-primary);
       margin-bottom: 4px;
     }
+
     .empty-state-desc {
       font-size: 11px;
       line-height: 1.4;
@@ -327,6 +371,7 @@
       flex-direction: column;
       gap: 8px;
     }
+
     .btn-download {
       width: 100%;
       background: var(--accent);
@@ -344,12 +389,15 @@
       gap: 6px;
       transition: filter 0.15s, opacity 0.15s, transform 0.05s;
     }
+
     .btn-download:hover:not(:disabled) {
       filter: brightness(1.06);
     }
+
     .btn-download:active:not(:disabled) {
       transform: scale(0.99);
     }
+
     .btn-download:disabled {
       background: #23272D;
       color: #636B78;
@@ -363,9 +411,11 @@
       flex-direction: column;
       gap: 5px;
     }
+
     .progress-box.active {
       display: flex;
     }
+
     .progress-track {
       width: 100%;
       height: 4px;
@@ -374,6 +424,7 @@
       overflow: hidden;
       border: 1px solid var(--border);
     }
+
     .progress-fill {
       height: 100%;
       width: 0%;
@@ -389,20 +440,43 @@
       white-space: pre-wrap;
       word-break: break-word;
     }
+
     .status-msg.error {
       color: var(--danger);
     }
+
     .status-msg.success {
+      color: var(--accent);
+    }
+
+    /* Footer credit */
+    .footer {
+      margin-top: 10px;
+      text-align: center;
+      line-height: 1;
+    }
+
+    .footer-link {
+      font-size: 11px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.15s ease;
+      cursor: pointer;
+    }
+
+    .footer-link:hover {
       color: var(--accent);
     }
   </style>
 </head>
+
 <body>
   <!-- Header -->
   <header class="header">
     <div class="brand">
       <div class="brand-icon">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+          stroke-linecap="round" stroke-linejoin="round">
           <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
         </svg>
       </div>
@@ -419,8 +493,9 @@
     <div class="summary-header">
       <span id="page-title" class="page-title" title="Target Page">Scanning…</span>
       <button id="rescan-btn" class="rescan-btn" title="Scan again">
-        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67" />
         </svg>
         <span>Rescan</span>
       </button>
@@ -452,7 +527,8 @@
   <!-- Download Action & Status -->
   <section class="cta-section">
     <button id="download-btn" class="btn-download" disabled>
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+        stroke-linecap="round" stroke-linejoin="round">
         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
         <polyline points="7 10 12 15 17 10"></polyline>
         <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -469,6 +545,13 @@
     <div id="status-msg" class="status-msg" role="status">Ready.</div>
   </section>
 
+  <!-- Footer Credit -->
+  <footer class="footer">
+    <a href="https://rajkiran-k-r.vercel.app/" target="_blank" rel="noopener noreferrer" class="footer-link">raju made
+      this. ↗</a>
+  </footer>
+
   <script src="popup.js"></script>
 </body>
+
 </html>
