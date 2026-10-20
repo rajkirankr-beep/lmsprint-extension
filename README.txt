@@ -1,30 +1,42 @@
-IIITK LMS PDF Bulk Downloader (Chrome extension)
+LMSprint — LMS Bulk Downloader (Chrome Extension)
 
-VERSION 1.1
+VERSION 2.0.0
 
 WHAT IT DOES
-- Scans the currently open page on https://lmsug25.iiitkottayam.ac.in/.
-- Finds direct PDF links, including Moodle pluginfile.php links.
-- Resolves Moodle resource-view pages to the actual PDF URL where possible, using your existing logged-in browser session.
-- Uses the actual PDF filename from the URL when available; otherwise uses the Moodle resource title and adds .pdf.
-- Skips PowerPoint, Office, archive, and Moodle folder links.
-- Starts downloads using Chrome's built-in download manager and saves under Downloads/IIITK_LMS.
+- Scans the currently open course page on https://lmsug25.iiitkottayam.ac.in/ (or *.iiitkottayam.ac.in).
+- Detects PDF and PowerPoint (PPT, PPTX) resources:
+  * Direct file links and Moodle pluginfile.php links
+  * Resolves Moodle resource-view pages (/mod/resource/view.php) using your existing authenticated session
+  * Inspects redirect URLs, Content-Disposition headers, and embedded HTML viewers
+- Selective Downloads:
+  * Checkbox for each resource, with all items selected by default
+  * Select All / Deselect All quick controls
+  * Primary download CTA dynamically shows selected file count (e.g., "Download 12 Files")
+- Compact File Type Filters:
+  * Filter tabs: "All", "PDFs", and "PPTs" with item counts
+  * Switching filters updates view without losing selections on hidden items
+  * Download button reflects the total selected files to download
+- Filename Resolution & Preservation:
+  * Resolves actual filenames from pluginfile URLs or Content-Disposition headers
+  * Preserves course resource titles when direct filenames are generic (avoids "view(1).pdf")
+  * Sanitizes illegal characters and handles duplicates (e.g., "Slides (2).pptx")
+  * Skips folders (/mod/folder/) and unsupported files (ZIP, RAR, DOCX, etc.)
+- Downloads via Chrome's download manager into Downloads/IIITK_LMS with progress tracking.
+- Minimal, high-contrast dark industrial UI with electric lime (#E2FF32) accents.
 
 INSTALL / UPDATE
-1. Extract iiitk_lms_pdf_downloader.zip.
-2. In Chrome, open chrome://extensions.
-3. Turn on Developer mode.
-4. If updating an existing installation, remove the old extension or load the newly extracted folder using Load unpacked. If the old extension was already loaded from the same folder, replace its files and click Reload on the extension card.
-5. Click Load unpacked and select the extracted folder containing manifest.json.
-6. Sign in to https://lmsug25.iiitkottayam.ac.in/ as usual.
-7. Open the LMS page containing the links.
-8. Click the extension icon, then Scan this page.
-9. Review the detected PDF filenames and click Download all PDFs.
-10. If Chrome asks permission for multiple downloads, allow it for the LMS.
+1. Open Chrome and go to chrome://extensions.
+2. Enable "Developer mode" in the top-right corner.
+3. Click "Load unpacked" and select the extension directory containing manifest.json.
+   (If updating an existing install, click the "Reload" icon on the LMSprint card).
+4. Sign in to https://lmsug25.iiitkottayam.ac.in/.
+5. Navigate to any course page containing lecture slides or documents.
+6. Click the LMSprint extension icon in the Chrome toolbar.
+7. Filter by All / PDFs / PPTs, customize selections, and click "Download N Files".
+8. If prompted by Chrome, allow multiple downloads for the LMS domain.
 
-IMPORTANT LIMITATIONS
-- Scans the current page only, not all courses automatically.
-- Only scans normal links present on the page and resource-view pages that can be resolved by a same-origin request. Resources loaded only by custom scripts or unusual Moodle configurations may need extra handling.
-- A resource-view page that cannot be resolved to a PDF is skipped rather than downloaded under a misleading name.
-- The extension does not ask for or transmit your password or session cookies to an external server.
-- If a download fails, confirm you're signed in and check Chrome's Downloads page for the error.
+SECURITY & PRIVACY
+- Runs entirely in your local browser.
+- Does not collect, log, or transmit any credentials, tokens, or session cookies.
+- All downloads use the browser's active authenticated session.
+- Moodle resource pages that cannot be resolved to a PDF/PPT/PPTX are safely skipped.
