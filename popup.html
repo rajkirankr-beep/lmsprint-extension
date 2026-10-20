@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LMS PDF Downloader</title>
+  <style>
+    body { font: 14px/1.45 system-ui, sans-serif; width: 340px; margin: 0; padding: 16px; color: #17202a; }
+    h1 { font-size: 17px; margin: 0 0 8px; }
+    p { margin: 6px 0 12px; color: #52606d; }
+    button { width: 100%; border: 0; border-radius: 8px; padding: 10px 12px; margin: 5px 0; font-weight: 650; cursor: pointer; background: #17202a; color: white; }
+    button.secondary { background: #e9eef3; color: #17202a; }
+    button:disabled { opacity: .55; cursor: wait; }
+    #status { margin: 10px 0; white-space: pre-wrap; }
+    #list { max-height: 180px; overflow: auto; padding-left: 20px; overflow-wrap: anywhere; }
+    .hint { font-size: 12px; color: #64748b; }
+  </style>
+</head>
+<body>
+  <h1>IIITK LMS PDF Downloader</h1>
+  <p>Open a page on your LMS that contains the PDF links, then scan it here.</p>
+  <button id="scan">Scan this page</button>
+  <button id="download" disabled>Download all PDFs</button>
+  <button id="rescan" class="secondary" hidden>Scan again</button>
+  <div id="status" role="status">Ready.</div>
+  <ol id="list"></ol>
+  <p class="hint">Downloads use Chrome's normal session and may follow Moodle redirects. Only use this for files you are allowed to access.</p>
+  <script src="popup.js"></script>
+</body>
+</html>

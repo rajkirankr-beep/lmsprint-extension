@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "IIITK LMS PDF Bulk Downloader",
+  "version": "1.0.0",
+  "description": "Find likely PDF links on the current IIIT Kottayam LMS page and download them using your browser session.",
+  "permissions": ["activeTab", "scripting", "downloads"],
+  "host_permissions": ["https://lmsug25.iiitkottayam.ac.in/*"],
+  "action": {
+    "default_title": "LMS PDF Downloader",
+    "default_popup": "popup.html"
+  }
+}
