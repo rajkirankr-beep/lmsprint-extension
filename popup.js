@@ -45,8 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       const u = new URL(url);
       return u.hostname === 'lmsug25.iiitkottayam.ac.in' ||
-             u.hostname.endsWith('.iiitkottayam.ac.in') ||
-             u.hostname === 'iiitkottayam.ac.in';
+        u.hostname.endsWith('.iiitkottayam.ac.in') ||
+        u.hostname === 'iiitkottayam.ac.in';
     } catch {
       return false;
     }
@@ -311,6 +311,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const h1 = document.querySelector('.page-header-headings h1, #page-header h1, h1');
           let pageTitle = (h1?.innerText || document.title || 'LMS Page').trim();
           pageTitle = pageTitle.replace(/\s*\|\s*.*$/, '').trim();
+          pageTitle = pageTitle.replace(/^course\s*:\s*/i, '').trim();
 
           const isPdf = (v) => /\.pdf$/i.test((v || '').split(/[?#]/)[0]);
           const isPptx = (v) => /\.pptx$/i.test((v || '').split(/[?#]/)[0]);
@@ -447,7 +448,7 @@ document.addEventListener('DOMContentLoaded', () => {
                       addDiscovered(u.href, item.label, eName, eType);
                       break;
                     }
-                  } catch {}
+                  } catch { }
                 }
               }
             } catch {
@@ -501,6 +502,12 @@ document.addEventListener('DOMContentLoaded', () => {
     progressFill.style.width = '0%';
 
     let startedCount = 0;
+    const rawTitle = pageTitleEl.textContent || 'LMS';
+    const safeTitle = rawTitle.replace(/[<>:"/\\|?*\x00-\x1F]/g, '_').replace(/\s+/g, '_').trim().slice(0, 60);
+    const now = new Date();
+    const dateStr = `${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}`;
+    const folderName = `${safeTitle}_${dateStr}_lms`;
+
     const failures = [];
 
     setStatusMsg(`Starting ${selectedList.length} download(s)… Keep Chrome open.`);
@@ -530,7 +537,7 @@ document.addEventListener('DOMContentLoaded', () => {
       try {
         await chrome.downloads.download({
           url: item.url,
-          filename: `IIITK_LMS/${item.filename}`,
+          filename: `${folderName}/${item.filename}`,
           conflictAction: 'uniquify',
           saveAs: false
         });
